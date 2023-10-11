@@ -1,0 +1,15 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.banner{
+    background-image: url("/img/bg-4.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 20rem 0;
+}
