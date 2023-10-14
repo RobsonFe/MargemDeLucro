@@ -14,3 +14,12 @@
     background-position: center;
     padding: 20rem 0;
 }
+
+.hero-content{
+    text-align: center;
+    color:white;
+    margin-top: 160px;
+    text-shadow: 3px 3px 2px #333;
+    font-size: 30px;
+    text-transform: uppercase;
+}   
