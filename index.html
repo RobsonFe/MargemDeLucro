@@ -1,128 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Robson Ferreira">
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./style.css">
-    
+
     <!-- (Bootstrap 5) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
+
     <script src="./script.js" defer></script>
-   
+
     <title>MargemPro</title>
 </head>
 <body>
-  <div class="banner">
+<div class="banner">
     <div class="hero-content">
-      <p>Lucre Com Precisão e Eficiência: Maximize seus Ganhos, Minimize seus Esforços, a Fórmula para o Sucesso Empresarial.</p>
+        <p>Lucre Com Precisão e Eficiência: Maximize seus Ganhos, Minimize seus Esforços, a Fórmula para o Sucesso Empresarial.</p>
     </div>
-    
-</div>
-        
-    
-    <div class="box">
-        <div class="container">
-            <h1 class="title is-centered mt-3">Calculadora Lucrativa MargemPro</h1>
-            <h2 class="subtitle">Sua Ferramenta de Lucro Empresarial, Calcule sua Margem com Facilidade e Lucro Inteligente ao seu Alcance.</h2>
 
-            </div>
-            <div class="box column is-half is-offset-one-quarter">
-        
-            <div class="field">
-        
+</div>
+
+<div class="box">
+    <div class="container">
+        <h1 class="title is-centered mt-3">Calculadora Lucrativa MargemPro</h1>
+        <h2 class="subtitle">Sua Ferramenta de Lucro Empresarial, Calcule sua Margem com Facilidade e Lucro Inteligente ao seu Alcance.</h2>
+
+    </div>
+    <div class="box column is-half is-offset-one-quarter">
+
+        <div class="field">
+
             <div class="control">
-            <label class="label" for="produto">Nome do Produto:</label>
-            <input type="text" class="input" id="nomeProduto" required>
+                <label class="label" for="produto">Nome do Produto:</label>
+                <input type="text" class="input" id="nomeProduto" required>
             </div>
-        
+
             <div class="control">
-            <label class="label" for="precoVenda">Valor do Produto (R$):</label>
-            <input class="input" type="number" id="precoVenda" step="0.01" min="0" required>
-            
+                <label class="label" for="precoVenda">Valor do Produto (R$):</label>
+                <input class="input" type="number" id="precoVenda" step="0.01" min="0" required>
             </div>
-        
+
             <div class="control">
-            <label class="label" for="custoUnitario">Porcentagem da Venda do Produto (R$):</label>
-            <input class="input" type="number" id="custoUnitario" step="0.01" min="0" required>
-            
+                <label class="label" for="custoUnitario">Custo Unitário (R$):</label>
+                <input class="input" type="number" id="custoUnitario" step="0.01" min="0" required>
+            </div>
+
+            <div class="control">
+                <label class="label" for="custoFixo">Custo Fixo (R$):</label>
+                <input class="input" type="number" id="custoFixo" step="0.01" min="0" required>
+            </div>
+
+            <div class="control">
+                <label class="label" for="comissao">Comissão (R$):</label>
+                <input class="input" type="number" id="comissao" step="0.01" min="0" required>
+            </div>
+
+            <div class="control">
+                <label class="label" for="outrasDespesas">Outras Despesas (R$):</label>
+                <input class="input" type="number" id="outrasDespesas" step="0.01" min="0" required>
+            </div>
+
+            <div class="control">
+                <label class="label" for="imposto">Imposto (%):</label>
+                <input class="input" type="number" id="imposto" step="0.01" min="0" required>
+            </div>
+
+            <div class="control">
+                <label class="label" for="lucroDesejado">Lucro Desejado (%):</label>
+                <input class="input" type="number" id="lucroDesejado" step="0.01" min="0" required>
+            </div>
+
             <div class="text-center mt-6">
                 <!-- Button trigger modal -->
-                <button type="button" class="button is-link is-hovered" 
-                data-bs-toggle="modal" 
-                data-bs-target="#exampleModal"
-                onclick="calcularMargem()">
-          Calcular Preço da Venda
-        </button>
-        
-            <button class="button is-danger is-hovered" onclick="limparCampo()">Limpar Campos</button>
-            </div> 
-            </div>
-            </div>
-            </div>
-            
-           
-            <hr />
-    </div>
+                <button type="button" class="button is-link is-hovered"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        onclick="calcularMargem()">
+                    Calcular Preço da Venda
+                </button>
 
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Resultado</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <label class="label">Produto:</label>
-          <span id="resultadoNomeProduto" class="input"></span>
-          <label class="label">Margem de Contribuição (R$):</label>
-          <span id="resultadoMargemContribuicao" class="input"></span>
-          <label class="label">Margem Percentual (%):</label>
-          <span id="resultadoMargemPercentual" class="input"></span>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-      </div>
+                <button class="button is-danger is-hovered" onclick="limparCampo()">Limpar Campos</button>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Resultado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label class="label">Produto:</label>
+                <span id="resultadoNomeProduto" class="input"></span>
+                <label class="label">Margem de Contribuição (R$):</label>
+                <span id="resultadoMargemContribuicao" class="input"></span>
+                <label class="label">Margem Percentual (%):</label>
+                <span id="resultadoMargemPercentual" class="input"></span>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <figure class="text-center">
-  <blockquote class="blockquote">
-    <p>Lucro é a arte de conseguir mais do que você realmente faz.</p>
-  </blockquote>
-  <figcaption class="blockquote-footer">
-    Aristóteles
-  </figcaption>
+    <blockquote class="blockquote">
+        <p>Lucro é a arte de conseguir mais do que você realmente faz.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        Aristóteles
+    </figcaption>
 </figure>
 
 <figure class="text-center">
-  <blockquote class="blockquote">
-    <p>Não é necessário ser um empresário para conhecer o que é lucro. Lucro é a diferença entre o faturamento e as despesas.</p>
-  </blockquote>
-  <figcaption class="blockquote-footer">
-    Michael Dell
-  </figcaption>
+    <blockquote class="blockquote">
+        <p>Não é necessário ser um empresário para conhecer o que é lucro. Lucro é a diferença entre o faturamento e as despesas.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        Michael Dell
+    </figcaption>
 </figure>
 
-
-
-
-    <footer class="footer">
-        <div class="content has-text-centered">
-          <p>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
             Desenvolvedor <Strong>Robson Ferreira</Strong>
-          </p>
-          <p>Acesse o <a href="https://www.linkedin.com/in/robson-ferreira-508247134/" target="_blank">Linkedin</a> e o <a href="https://github.com/RobsonFe" target="_blank">GitHub.</a></p>
-        </div>
-      </footer>
-    
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        </p>
+        <p>Acesse o <a href="https://www.linkedin.com/in/robson-ferreira-508247134/" target="_blank">Linkedin</a> e o <a
+                href="https://github.com/RobsonFe" target="_blank">GitHub.</a></p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 </html>
