@@ -41,6 +41,7 @@ function formatarDinheiroParaNumero(valor) {
     return parseFloat(numeroFormatado);
 }
 
+
 // Função para calcular o preço de venda
 function calcularPrecoDeVenda() {
     // Entradas
@@ -52,26 +53,33 @@ function calcularPrecoDeVenda() {
     const custosFixos = formatarDinheiroParaNumero(document.getElementById('custosFixos').value);
     const custosVariaveis = formatarDinheiroParaNumero(document.getElementById('custosVariaveis').value);
 
-    // Calcula o custo total (CT)
-    const custoTotal = custoUnitario + frete + (custoUnitario * (imposto / 100));
+    // Verifique se algum campo está vazio
+    if (!nomeProduto || !custoUnitario || !frete || !imposto || !lucroDesejado || !custosFixos || !custosVariaveis) {
+        alert('Preencha todos os campos.');
+    } else {
+        // Calcula o custo total (CT)
+        const custoTotal = custoUnitario + frete + (custoUnitario * (imposto / 100));
 
-    // Calcula a margem de lucro desejada em decimal (40% -> 0.40)
-    const margemLucroDesejada = lucroDesejado / 100;
+        // Calcula a margem de lucro desejada em decimal (40% -> 0.40)
+        const margemLucroDesejada = lucroDesejado / 100;
 
-    // Calcula o custo total, incluindo o lucro desejado
-    const custoTotalComLucro = custoTotal / (1 - margemLucroDesejada);
+        // Calcula o custo total, incluindo o lucro desejado
+        const custoTotalComLucro = custoTotal / (1 - margemLucroDesejada);
 
-    // Calcula o custo total considerando os custos fixos e variáveis
-    const custoTotalComCustos = custoTotalComLucro / (1 - (custosFixos + custosVariaveis) / 100);
+        // Calcula o custo total considerando os custos fixos e variáveis
+        const custoTotalComCustos = custoTotalComLucro / (1 - (custosFixos + custosVariaveis) / 100);
 
-    // Exibe o resultado no modal
-    document.getElementById('modalNomeProduto').textContent = nomeProduto;
-    document.getElementById('modalResultadoPrecoDeVenda').textContent = "R$" + custoTotalComCustos.toFixed(2).replace('.', ',');
+        // Exibe o resultado no modal
+        document.getElementById('modalNomeProduto').textContent = nomeProduto;
+        document.getElementById('modalResultadoPrecoDeVenda').textContent = "R$" + custoTotalComCustos.toFixed(2).replace('.', ',');
 
-    // Abre o modal
-    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-    myModal.show();
+        // Abre o modal
+        const myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+        myModal.show();
+    }
 }
+
+
 
 
 
